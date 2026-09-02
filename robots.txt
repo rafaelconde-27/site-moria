@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moriausinagem.com.br/sitemap.xml
