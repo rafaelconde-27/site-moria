@@ -1,0 +1,335 @@
+/* ============================================================
+   CONTATO.CSS — estilos exclusivos da página de Contato
+   ============================================================ */
+
+/* ── GRID PRINCIPAL ─────────────────────────────────────── */
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ── COLUNA DO FORMULÁRIO ───────────────────────────────── */
+.contato-form-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 12px 0 12px;
+  letter-spacing: -0.3px;
+}
+.contato-form-desc {
+  font-size: 14px;
+  color: var(--body-text);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.contato-form { display: flex; flex-direction: column; }
+
+/* file drop */
+.file-drop {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.file-drop:hover {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+.file-drop p {
+  font-size: 14px;
+  color: var(--body-text);
+}
+.file-drop-label {
+  color: var(--gold);
+  cursor: pointer;
+  font-weight: 500;
+}
+.file-drop-label:hover { text-decoration: underline; }
+.file-drop span {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ── FORMULÁRIO — LAYOUT DE CAMPOS ─────────────────────── */
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 0;
+}
+.form-row .form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── COLUNA DE INFORMAÇÕES ──────────────────────────────── */
+.contato-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.info-block {
+  background: var(--deep);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+}
+.info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+a.info-item:hover { opacity: 0.8; }
+.info-item-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+.info-item-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.info-item-value {
+  font-size: 14px;
+  color: var(--body-text);
+  line-height: 1.55;
+}
+
+/* ── PROCESSO DE ORÇAMENTO ──────────────────────────────── */
+.processo-orcamento {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+.pq-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.pq-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--gold);
+  opacity: 0.5;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 36px;
+}
+.pq-step strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--light);
+  margin-bottom: 4px;
+}
+.pq-step p {
+  font-size: 13px;
+  color: var(--body-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── RESPONSIVIDADE COMPLETA ─────────────────────────────── */
+
+/* Tablet largo (≤1100px) */
+@media (max-width: 1100px) {
+  .contato-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contato-info-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .info-block {
+    flex: 1;
+    min-width: 280px;
+  }
+  .contato-form-title { font-size: 30px; }
+}
+
+/* Tablet (≤900px) */
+@media (max-width: 900px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .contato-form-title { font-size: 28px; }
+  .info-block { padding: 28px 24px; }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  .contato-grid { gap: 36px; }
+  .contato-info-col { flex-direction: column; }
+  .info-block { min-width: 0; width: 100%; }
+  .contato-form-title { font-size: 26px; }
+  .contato-form-desc { font-size: 13px; margin-bottom: 28px; }
+
+  /* Form rows empilham em coluna */
+  .form-row {
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* File drop menor */
+  .file-drop { padding: 24px 16px; }
+
+  /* FAQ */
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-item { padding: 28px 20px; }
+  .faq-item h3 { font-size: 17px; }
+
+  /* Info items mais compactos */
+  .info-items { gap: 14px; }
+  .info-item-icon { width: 36px; height: 36px; }
+  .info-item-value { font-size: 13px; }
+
+  /* Modal */
+  .custom-modal-content { padding: 36px 24px; }
+  .custom-modal-title { font-size: 22px; }
+  .custom-modal-desc { font-size: 14px; }
+}
+
+/* Mobile pequeno (≤480px) */
+@media (max-width: 480px) {
+  .contato-form-title { font-size: 22px; letter-spacing: -0.2px; }
+  .info-block { padding: 24px 16px; }
+
+  /* Processo de orçamento */
+  .pq-num { font-size: 22px; min-width: 28px; }
+  .pq-step strong { font-size: 12px; }
+  .pq-step p { font-size: 12px; }
+
+  /* Modal */
+  .custom-modal-content { padding: 28px 16px; }
+  .custom-modal-icon { width: 56px; height: 56px; }
+  .custom-modal-title { font-size: 20px; }
+
+  /* Dados técnicos */
+  .dados-tec-list li { flex-direction: column; gap: 4px; }
+  .dados-tec-list li span { min-width: 0; }
+}
+
+/* ── MODAL DE ALERTA ────────────────────────────────────── */
+.custom-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 12, 16, 0.85); /* Fundo escuro com leve transparência */
+  backdrop-filter: blur(4px); /* Efeito de desfoque no fundo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+.custom-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.custom-modal-content {
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+.custom-modal.active .custom-modal-content {
+  transform: translateY(0);
+}
+.custom-modal-icon {
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  background: var(--steel);
+  border-radius: 50%;
+}
+.custom-modal-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+.custom-modal-desc {
+  font-size: 15px;
+  color: var(--body-text);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* ── MODAL DE ALERTA ERRO CAMPO VAZIO FORM ────────────────── */
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: var(--red);
+}
+.form-error {
+  font-size: 11px;
+  color: var(--red);
+  margin-top: 6px;
+  display: none;
+}
+.form-group:has(input:invalid:not(:placeholder-shown)) .form-error {
+  display: block;
+}
+
+/* ── AVISO LGPD ─────────────────────────────────────────── */
+.privacy-disclaimer {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.privacy-disclaimer p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.privacy-disclaimer a {
+  color: var(--gold);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.privacy-disclaimer a:hover {
+  color: var(--white);
+}

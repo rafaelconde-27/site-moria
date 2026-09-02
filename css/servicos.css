@@ -1,0 +1,513 @@
+/* ── INTRO SPLIT ─────────────────────────────────────────── */
+.intro-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.intro-lead {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--light);
+  letter-spacing: 0.01em;
+}
+.intro-body {
+  font-size: 15px;
+  color: var(--body-text);
+  line-height: 1.75;
+}
+
+/* ── INTRO CENTERED (Texto e Botão Centralizados) ────────── */
+.intro-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px; /* Limita a largura para o texto não ficar muito espalhado */
+  margin: 0 auto;   /* Centraliza o bloco na tela */
+}
+
+.intro-centered .intro-body {
+  margin-bottom: 32px;
+}
+
+/* Classe modificadora para deixar o botão mais comprido */
+.btn-wide {
+  padding: 16px 80px; /* Aumenta o espaçamento interno lateral */
+  min-width: 350px;   /* Define uma largura mínima bem grande */
+  justify-content: center; /* Centraliza o texto dentro do botão */
+}
+
+/* ── PAGE HERO SPLIT & VIDEO ─────────────────────────────── */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-video-col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Moldura Sofisticada */
+.hero-video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px; /* Largura ideal para vídeo vertical */
+  aspect-ratio: 9 / 16;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px; /* Cria o efeito de passe-partout (borda interna) */
+  background: var(--deep);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+
+/* Brilho de fundo discreto (Aura dourada) */
+.hero-video-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(46, 111, 216, 0.08), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* O Player do Vídeo */
+.hero-video {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 6px); /* Arredondamento interno acompanhando a moldura */
+  border: 1px solid rgba(255,255,255,0.05);
+  background-color: var(--black);
+}
+
+/* Customização para a barra de controles ficar mais discreta */
+.hero-video::-webkit-media-controls-panel {
+  background-image: linear-gradient(transparent, rgba(10, 12, 16, 0.9));
+}
+
+/* Responsividade (Celular e Tablets) */
+@media (max-width: 992px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .hero-video-col {
+    justify-content: center;
+  }
+}
+
+/* ── INTRO GALERIA ───────────────────────────────────────── */
+.intro-gallery {
+  position: relative;
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.gallery-track-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE e Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.gallery-track-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
+}
+.gallery-track {
+  display: flex;
+  gap: 16px;
+}
+.gallery-img {
+  flex: 0 0 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  scroll-snap-align: center;
+  border: 1px solid var(--border);
+}
+
+/* Telas maiores: mostra duas imagens lado a lado */
+@media (min-width: 768px) {
+  .gallery-img { 
+    flex: 0 0 calc(50% - 8px); 
+    height: 480px; 
+  }
+}
+
+/* Botões da Galeria */
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  background: var(--deep);
+  border: 1px solid var(--border);
+  color: var(--light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.gallery-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #ffffff;
+}
+.prev-btn { left: -24px; }
+.next-btn { right: -24px; }
+
+/* Ajuste das setas para telas menores (mobile) */
+@media (max-width: 768px) {
+  .prev-btn { left: 8px; }
+  .next-btn { right: 8px; }
+}
+
+/* ── SERVICO BLOCKS ──────────────────────────────────────── */
+.servico-block {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+.servico-block--alt { background: var(--deep); }
+
+.servico-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.servico-num {
+  font-family: var(--font-display);
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--border);
+  letter-spacing: -4px;
+  margin-bottom: 8px;
+}
+.servico-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+.servico-desc {
+  font-size: 15px;
+  color: var(--body-text);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.servico-specs {
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.servico-specs li {
+  display: flex;
+  gap: 16px;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: var(--body-text);
+  border-bottom: 1px solid var(--border);
+}
+.servico-specs li:last-child { border-bottom: none; }
+.servico-specs li span {
+  font-weight: 600;
+  color: var(--gold);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+/* ── DIAGRAM ─────────────────────────────────────────────── */
+.servico-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.servico-diagram {
+  width: 100%;
+  max-width: 400px;
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.servico-diagram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.12;
+}
+.servico-diagram svg {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SERVIÇOS LISTA ──────────────────────────────────────── */
+.servicos-lista { padding-bottom: 0; }
+
+.servicos-header { margin-bottom: 72px; }
+
+.sv-item {
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.sv-item--alt { background: var(--surface); }
+.sv-item--alt .sv-content { flex-direction: row-reverse; }
+
+.sv-index {
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  letter-spacing: -6px;
+  position: absolute;
+  top: 48px;
+  right: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sv-content {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+.sv-content--reverse {
+  flex-direction: row-reverse;
+}
+
+/* Coluna de texto */
+.sv-text { flex: 1; min-width: 0; }
+
+.sv-name {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.sv-desc {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.sv-specs-row {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.sv-spec {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 14px 20px;
+  border-right: 1px solid var(--border);
+}
+.sv-spec:last-child { border-right: none; }
+.sv-spec-label {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.sv-spec-val {
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.sv-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold-line);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.sv-cta:hover { color: var(--white); border-color: var(--white); }
+
+/* Coluna de fotos */
+.sv-gallery {
+  flex: 0 0 420px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+.sv-photo { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.sv-photo--main {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+.sv-photo--secondary { aspect-ratio: 4 / 3; }
+
+/* Placeholder — remover quando as fotos forem inseridas */
+.sv-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--steel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+.sv-photo-placeholder span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVIDADE COMPLETA ─────────────────────────────── */
+
+/* Tablet largo (≤1100px) */
+@media (max-width: 1100px) {
+  .sv-gallery { flex: 0 0 360px; }
+  .sv-content { gap: 48px; }
+}
+
+/* Tablet (≤960px) */
+@media (max-width: 960px) {
+  .sv-content,
+  .sv-content--reverse { flex-direction: column; gap: 40px; }
+  .sv-gallery { flex: unset; width: 100%; }
+  .sv-index { font-size: 80px; top: 24px; }
+  .sv-name { font-size: clamp(28px, 5vw, 40px); }
+  .sv-desc { font-size: 18px !important; }
+
+  .intro-split { grid-template-columns: 1fr; gap: 40px; }
+  .servico-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  /* Intro centralizado */
+  .intro-centered { padding: 0 4px; }
+  .btn-wide { min-width: 0; width: 100%; padding: 16px 24px; }
+
+  /* Hero Split */
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+  .hero-video-col { justify-content: center; }
+  .hero-video-wrapper { max-width: 260px; }
+
+  /* Galeria */
+  .gallery-img { height: 260px; }
+  .prev-btn { left: 8px; }
+  .next-btn { right: 8px; }
+  .gallery-btn { width: 40px; height: 40px; }
+
+  /* Serviços lista */
+  .sv-item { padding: 56px 0; }
+  .sv-specs-row { flex-direction: column; }
+  .sv-spec { border-right: none; border-bottom: 1px solid var(--border); }
+  .sv-spec:last-child { border-bottom: none; }
+  .sv-photo--main { aspect-ratio: 16 / 7; }
+  .sv-desc { font-size: 18px !important; max-width: 100%; }
+
+  /* Inline CTA */
+  .inline-cta { flex-direction: column; gap: 20px; padding: 24px 20px; }
+  .inline-cta a { width: 100%; text-align: center; }
+
+  .section-title { font-size: clamp(24px, 6vw, 40px); }
+}
+
+/* Mobile pequeno (≤480px) */
+@media (max-width: 480px) {
+  .hero-video-wrapper { max-width: 220px; }
+  .sv-index { font-size: 60px; top: 16px; }
+  .gallery-img { height: 220px; }
+  .sv-gallery {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .sv-photo--main { aspect-ratio: 16 / 9; }
+  .sv-photo--secondary { aspect-ratio: 16 / 9; }
+  .inline-cta p { font-size: 14px; }
+  .sv-specs-row { margin-bottom: 24px; }
+}
+
+/* ── CTA SECTION ─────────────────────────────────────────── */
+.cta-section-servicos { border-top: 1px solid var(--border); }
+
+@media (max-width: 900px) {
+  .intro-split { grid-template-columns: 1fr; gap: 40px; }
+  .servico-grid { grid-template-columns: 1fr; gap: 48px; }
+  .cta-block { flex-direction: column; padding: 48px 32px; text-align: center; }
+  .cta-actions { justify-content: center; }
+}
+
+/* ── INLINE CTA CARD ── */
+.inline-cta {
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 64px 0 0;
+}
+.inline-cta p {
+  font-size: 16px;
+  color: var(--light);
+  line-height: 1.6;
+}
+.inline-cta p strong { color: var(--white); }
